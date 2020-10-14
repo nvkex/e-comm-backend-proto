@@ -2,6 +2,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 const AuthHistory = require('../models/AuthHistory');
+const { welcomeMail } = require('../utils/mail.util');
 
 exports.loginUser = async (req, res) => {
     const user = await User.findOne({
@@ -65,7 +66,9 @@ exports.signupUser = async (req, res) => {
 
     try {
         const saveUser = await newUser.save();
-        console.log(saveUser)
+
+        // Send a welcome mail
+        welcomeMail(req.body.email, req.body.name)
 
         // Log this to Authentication History
         AuthHistory.updateOne(
