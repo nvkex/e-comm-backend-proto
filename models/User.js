@@ -33,7 +33,7 @@ const UserSchema = new mongoose.Schema({
     },
     transactionHistory: [{
         id: {
-            type: String,
+            type: mongoose.Schema.Types.ObjectId,
             trim: true
         },
         transactionType: {
