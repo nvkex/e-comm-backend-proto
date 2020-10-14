@@ -2,9 +2,14 @@ const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
 const mongoose = require('mongoose');
-const dotenv = require('dotenv').config();
+const dotenv = require('dotenv');
 
+// Route Dependencies
+const authRouter = require('./routes/auth.route');
+
+// Init
 const app = express();
+dotenv.config();
 
 // Choose a port to listen to.
 const PORT = process.env.PORT || 3001;
@@ -25,6 +30,9 @@ mongoose.connect(process.env.MONGODB_URL, {
 .catch(e => {
     console.log(e);
 })
+
+// Routes
+app.use('/auth', authRouter);
 
 // Listen on a port
 app.listen(PORT, () => {
