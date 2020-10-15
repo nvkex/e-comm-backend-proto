@@ -11,6 +11,7 @@ const TransactionSchema = new mongoose.Schema({
     productId:{
         type:  mongoose.Schema.Types.ObjectId
     },
+    // Buyer
     sender: {
         id: {
             type: mongoose.Schema.Types.ObjectId,
@@ -18,15 +19,22 @@ const TransactionSchema = new mongoose.Schema({
         name: {
             type: String
         },
+        email:{
+            type: String
+        },
         location: {
             type: String
         }
     },
+    // Seller
     recipient: {
         id: {
             type: mongoose.Schema.Types.ObjectId,
         },
         name: {
+            type: String
+        },
+        email:{
             type: String
         },
         location: {
@@ -36,6 +44,10 @@ const TransactionSchema = new mongoose.Schema({
     date: {
         type: Date,
         default: new Date()
+    },
+    coupon: {
+        type: String,
+        default: null
     },
     success: {
         type: Boolean,
