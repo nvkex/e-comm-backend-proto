@@ -37,7 +37,8 @@ exports.loginUser = async (req, res) => {
                     userId: user._id,
                     name: user.name,
                     isAdmin: user.admin,
-                    date: new Date()
+                    date: new Date(),
+                    ip: req.ip
                 }]
             }
         },
@@ -61,7 +62,8 @@ exports.signupUser = async (req, res) => {
     const newUser = new User({
         name: req.body.name,
         email: req.body.email,
-        password: hashedPassword
+        password: hashedPassword,
+        defaultIP: req.ip
     });
 
     try {
@@ -80,7 +82,8 @@ exports.signupUser = async (req, res) => {
                         userId: saveUser._id,
                         name: saveUser.name,
                         isAdmin: saveUser.admin,
-                        date: new Date()
+                        date: new Date(),
+                        ip: req.ip
                     }]
                 }
             },
