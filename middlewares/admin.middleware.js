@@ -12,7 +12,6 @@ const isAdmin = (req, res, next) => {
     try {
         // Verify using JWT
         const verified = jwt.verify(token, process.env.JWT_TOKEN);
-        console.log(verified)
         
         // Check if user is admin
         User.findOne({_id: mongoose.Types.ObjectId(verified.id)})
