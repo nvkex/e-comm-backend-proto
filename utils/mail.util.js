@@ -1,6 +1,13 @@
 const nodemailer = require('nodemailer');
 
+/**
+ * Send a welcome mail on successful registration
+ * @param {String} userEmail - user's email
+ * @param {String} name - user's name
+ */
 exports.welcomeMail = (userEmail, name) => {
+
+    // Create a transport
     const transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
@@ -9,6 +16,7 @@ exports.welcomeMail = (userEmail, name) => {
         }
     });
 
+    // Mail options - Mail sender, reciever, subject & body
     const mailOptions = {
         from: process.env.COMPANY_EMAIL,
         to: userEmail,
@@ -16,6 +24,7 @@ exports.welcomeMail = (userEmail, name) => {
         text: `Hello ${name}!`
     };
 
+    // Send mail
     transporter.sendMail(mailOptions, function (error, info) {
         if (error) {
             console.log(error);
@@ -25,7 +34,15 @@ exports.welcomeMail = (userEmail, name) => {
     });
 }
 
+/**
+ * Send transaction report/confirmation as a mail
+ * @param {String} userEmail - User's email
+ * @param {String} name - User's name
+ * @param {ObjectID} product - Product ID
+ */
 exports.transactionMail = (userEmail, name, product) => {
+
+    // Create a transport
     const transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
@@ -34,6 +51,7 @@ exports.transactionMail = (userEmail, name, product) => {
         }
     });
 
+    // Mail options - Mail sender, reciever, subject & body
     const mailOptions = {
         from: process.env.COMPANY_EMAIL,
         to: userEmail,
@@ -41,6 +59,7 @@ exports.transactionMail = (userEmail, name, product) => {
         text: `Hello ${name}! Transaction for product:${product} successful!`
     };
 
+    // Send mail
     transporter.sendMail(mailOptions, function (error, info) {
         if (error) {
             console.log(error);
@@ -48,4 +67,5 @@ exports.transactionMail = (userEmail, name, product) => {
             console.log('Transaction mail sent: ' + info.response);
         }
     });
+
 }
