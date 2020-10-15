@@ -7,8 +7,8 @@
     - [Login](#1-login)
     - [Signup](#2-signup)
 - Admin
-    - [Get Login/Signup History](#3-get-authentication-history-(admin))
-    - [Get Buy/Sell History](#3-get-transaction-history-(admin))
+    - [Get Login/Signup History](#3-get-authentication-history-admin)
+    - [Get Buy/Sell History](#3-get-transaction-history-admin)
 
 ## Base URL
 `N/A`
