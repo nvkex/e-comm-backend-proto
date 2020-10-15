@@ -7,6 +7,7 @@ const dotenv = require('dotenv');
 // Route Dependencies
 const authRouter = require('./routes/auth.route');
 const adminRouter = require('./routes/admin.route');
+const userRouter = require('./routes/user.route');
 
 // Init
 const app = express();
@@ -35,6 +36,7 @@ mongoose.connect(process.env.MONGODB_URL, {
 // Routes
 app.use('/auth', authRouter);
 app.use('/admin', adminRouter);
+app.use('/user', userRouter)
 
 // Listen on a port
 app.listen(PORT, () => {
