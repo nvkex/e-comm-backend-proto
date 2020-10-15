@@ -22,6 +22,9 @@ const AuthSchema = new mongoose.Schema({
         },
         date: {
             type: Date
+        },
+        ip: {
+            type: String
         }
     }]
 });
