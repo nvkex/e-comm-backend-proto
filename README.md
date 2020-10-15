@@ -4,11 +4,11 @@
 *This API can be used to perform all types of operations related to an e-commerce website*
 
 - Authentication
-    - [Login](#1.-login)
-    - [Signup](#2.-signup)
+    - [Login](#1-login)
+    - [Signup](#2-signup)
 - Admin
-    - [Get Login/Signup History](#3.-get-authentication-history-(admin))
-    - [Get Buy/Sell History](#3.-get-transaction-history-(admin))
+    - [Get Login/Signup History](#3-get-authentication-history-(admin))
+    - [Get Buy/Sell History](#3-get-transaction-history-(admin))
 
 ## Base URL
 `N/A`
