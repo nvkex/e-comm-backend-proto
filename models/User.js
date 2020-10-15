@@ -31,6 +31,9 @@ const UserSchema = new mongoose.Schema({
         type: Date,
         required: false
     },
+    defaultIP: {
+        type: String
+    },
     transactionHistory: [{
         id: {
             type: mongoose.Schema.Types.ObjectId,
