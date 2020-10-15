@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 const isAdmin = (req, res, next) => {
     const token = req.headers["x-access-token"];
 
+    // Check if token exists
     if (!token)
         return res.status(403).send({ message: "No token provided!" });
 

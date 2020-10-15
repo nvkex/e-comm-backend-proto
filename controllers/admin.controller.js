@@ -17,6 +17,7 @@ exports.getAuthHistory = (req, res) => {
             "history.userId": mongoose.Types.ObjectId(req.body.user)
         }
 
+    // Get auth history from DB
     AuthHistory.find(query)
         .then(data => {
             res.status(200).send({ data });
@@ -42,6 +43,7 @@ exports.getTransactionHistory = (req, res) => {
     if (req.body.seller)
         query = { ...query, "recipient.id": mongoose.Types.ObjectId(req.body.seller) }
 
+    // Get transaction history from DB
     Transaction.find(query)
         .then(data => {
             res.status(200).send({ data });

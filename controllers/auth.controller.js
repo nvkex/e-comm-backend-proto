@@ -5,19 +5,24 @@ const AuthHistory = require('../models/AuthHistory');
 const { welcomeMail } = require('../utils/mail.util');
 
 exports.loginUser = async (req, res) => {
+
+    // Look for the user in DB
     const user = await User.findOne({
         email: req.body.email
     });
 
+    // Check if the user exists
     if (!user) {
         return res.status(400).json({ error: 'User doesnt exist' });
     }
 
+    // Encrypt and match password
     const validPassword = await bcrypt.compare(req.body.password, user.password);
     if (!validPassword) {
         return res.status(400).send({ error: 'Invalid Password' });
     }
 
+    // Sign a JWT token with a secret key
     const token = jwt.sign(
         {
             id: user._id,
@@ -46,19 +51,25 @@ exports.loginUser = async (req, res) => {
     ).then(data => {})
     .catch(err => {})
 
+    // Send JWT token in header
     res.header('auth-token', token).send({ token, user });
 }
 
 exports.signupUser = async (req, res) => {
+
+    // Look for the same user
     const emailExists = await User.findOne({ email: req.body.email });
 
+    // Check if user already exists
     if (emailExists) {
         return res.status(400).json({ error: 'Email already exists' })
     }
 
+    // Hash the password
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(req.body.password, salt);
 
+    // Create a new User Model with the info provided
     const newUser = new User({
         name: req.body.name,
         email: req.body.email,
@@ -66,6 +77,7 @@ exports.signupUser = async (req, res) => {
         defaultIP: req.ip
     });
 
+    // Save user to DB
     try {
         const saveUser = await newUser.save();
 
@@ -90,7 +102,8 @@ exports.signupUser = async (req, res) => {
             { upsert: true }
         ).then(data => {})
         .catch(err => {})
-
+        
+        // Send registration confirmation message to client
         res.send({ status: 200, msg: "User Created!" });
     }
     catch (err) {

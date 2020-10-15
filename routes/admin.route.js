@@ -1,15 +1,17 @@
 const router = require('express').Router();
 
+// Controllers
 const {
     loginUser,
     signupUser
 } = require('../controllers/auth.controller');
-
 const {
     getAuthHistory,
     getTransactionHistory
 } = require('../controllers/admin.controller');
 
+
+// Middlewares
 const {
     isAdmin
 } = require('../middlewares/admin.middleware');
