@@ -23,7 +23,7 @@ exports.getAuthHistory = (req, res) => {
             res.status(200).send({ data });
         })
         .catch(err => {
-            res.send(400).send({ error: err });
+            res.status(400).send({ error: err });
         })
 }
 
