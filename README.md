@@ -13,13 +13,13 @@
     - [Buy Product](#4-buy-product)
 
 ## Base URL
-`N/A`
+`https://e-comm-proto.herokuapp.com/`
 
 ## Routes
 ### 1. Login
 **Method** :  `POST`
 
-**URL** : `<Base URL>/auth/login`
+**URL** : `https://e-comm-proto.herokuapp.com/auth/login`
 
 **Auth Required** : `false`
 
@@ -63,7 +63,7 @@
 ### 2. Signup
 **Method** :  `POST`
 
-**URL** : `<Base URL>/auth/signup`
+**URL** : `https://e-comm-proto.herokuapp.com/auth/signup`
 
 **Auth Required** : `false`
 
@@ -105,7 +105,7 @@
 ### 3. Get Authentication History (Admin)
 **Method** :  `GET`
 
-**URL** : `<Base URL>/admin/auth-history`
+**URL** : `https://e-comm-proto.herokuapp.com/admin/auth-history`
 
 **Auth Required** : `true`
 
@@ -146,7 +146,7 @@
 ### 3. Get Transaction History (Admin)
 **Method** :  `GET`
 
-**URL** : `<Base URL>/admin/transaction-history`
+**URL** : `https://e-comm-proto.herokuapp.com/admin/transaction-history`
 
 **Auth Required** : `true`
 
@@ -184,7 +184,7 @@
 ### 4. Buy Product
 **Method** :  `POST`
 
-**URL** : `<Base URL>/user/buy`
+**URL** : `https://e-comm-proto.herokuapp.com/user/buy`
 
 **Auth Required** : `true`
 
