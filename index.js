@@ -8,6 +8,7 @@ const dotenv = require('dotenv');
 const authRouter = require('./routes/auth.route');
 const adminRouter = require('./routes/admin.route');
 const userRouter = require('./routes/user.route');
+const defaultRouter = require('./routes/default.route');
 
 // Init
 const app = express();
@@ -36,7 +37,8 @@ mongoose.connect(process.env.MONGODB_URL, {
 // Routes
 app.use('/auth', authRouter);
 app.use('/admin', adminRouter);
-app.use('/user', userRouter)
+app.use('/user', userRouter);
+app.use('/', defaultRouter);
 
 // Listen on a port
 app.listen(PORT, () => {
